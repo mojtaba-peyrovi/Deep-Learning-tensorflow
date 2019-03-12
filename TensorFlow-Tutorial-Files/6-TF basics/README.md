@@ -132,6 +132,30 @@ then we define the x, W, and b as placeholders and variables. then we calculate 
 
 Next step, is making an activation function (tanh, sigmoid, etc.) and pass the z which is the linear regression formula into the activation function.
 
+As we see in the code, now we can calculate the results for 3 output neurons. 
+
+But in real world, we need to re-adjust W and b in order to optimize the results. For having this, we need to have a sort of cost function.
+
+We now make a simple linear regression example. 
+
+#### Simple linear regression example:
+
+we made some random values betwen 0-10 for x and y, and we added some noise to them and we see when we plot them there is a sort fo linear relationship between the points that we can predict.
+
+- When we defined m, b variables, we will have to define the real y and predicted y (y_hat) and define the difference of these two values as the error. but for each set of x,y we will add up the errors. 
+
+- Next step, is to try to minimize the error. for this, we need to use gradiant descent.
+```
+optimizer = tf.train.GradientDescentOptimizer(learning_rate = 0.001)
+```
+
+Now we just need to minimize the error like this:
+```
+train = optimizer.minimize(error)
+```
+We can see the rest of the code in the notebook called TF-NN-part1.ipynb
+
+
 
 
 
