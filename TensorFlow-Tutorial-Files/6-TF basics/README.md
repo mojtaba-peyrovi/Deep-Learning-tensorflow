@@ -251,3 +251,14 @@ When we want to train the model, we can't simply do it as we did before, to defi
 embedded_group_col = tf.feature_column.embedding_column(assigned_group, dimension=4)  //4 is the number of the categories (A,B,C,D)
 ```
 Now, we converted assigned_group to embedded_group_col, so we need to update the features_list and replace them in the list.
+
+##### Saving and restoring models:
+
+We want to see how to save TF models to reuse them again. The best way, is to use:
+```
+saver = tf.train.saver()
+```
+Then we will have to save a checkpoint, using the saver instance, as we can see in the notebook called saving-and-loading-models.ipynb
+
+- In the same way, we can restore teh model, and train it with more data, or just run it and get the results, we can see in the same notebook.
+
