@@ -88,5 +88,75 @@ example: tf.cast(correct_prediction, float32)  // converts true/falses into 0/1
 ```
 
 
+### Convolutional Neural Network:
+
+The idea comes from Hubel & Wiesel, noble prize winners in 1981, who studied the structure of the visual cortex in mammals. The concept is, mammals eyes have local receptive fields. It means that the eye first sees the local subsets of the whole picture, then later all these subsets will overlap and create the large photo in the viewer's mind. This is the idea behind Convolutional Neural Networks (CNN) 
+
+For the first time in 1998, Yann LeCun et al implemented this technique. 
+
+The LeNet-5 architecture was first used to classify MNIST dataset.
+
+(Here is a break-down about how CNN works: CNN-breakdown.jpg)
+
+For understanding CNN, let's have a review about the following concepts:
+
+1) __TENSORS:__ Tensor are N-dimensional arrays that we build, as we increase the dimension. Here are the datatypes we have available when working with CNN:
+- Scalar: digits such as 1,2,3,4
+- Vector: [3,4,5]
+- Matrix: [[1,2],[3,4],[5,6],[7,8]]
+- Tensor: [[[1,2],[3,4]],[[5,6],[7,8]]]
+
+Using tensors will make it so easy to feed in sets of images into our model. we can have (I,H,W,C):
+
+- I: images
+- H: height of the image in pixels
+- W: width of the image in pixels
+- C: color channels, (RGB)
+
+2) __DNN vs CNN:__  Dense Neural Networks are the situation when every neuron in one layer, is connected to all neurons on the next layer. we can easily feed DNN into tf.estimator API.
+Whereas in CNN, we will have smaller number of neurons from the next layer connected to each neuron. 
+(cnn-example.jpg)
+
+#### Why should we bother usinfg CNN instead of DNN?
+
+The reason is SCALABILITY. When the images get larger, and the quantity of them images increase, DNN cannot handle the meteoric amount of data and analyzing data would be time consuming and expensive.
+
+CNN instead, uses Convolutions, that have major benefits for image processing. They come from the fact that nearby pixels have more correlation in an image.
+
+#### How CNN works?
+
+It starts with the first layer which is the main image. 
+
+Then the convolutional layer is added. The convolutional layers, will be connected only to pixels related in their respective fields. 
+
+In the same way, we can add as many convolutional layers as we want. (convolutional-layers.jpg)
+
+when it gets to the edges, there won't be enough data for the neurons from the actual input data. For this problem, we can add padding of zeros around the image. (padding.jpg)
+
+Here is how we implement filters : filter-representation.jpg
+
+The filter result will be 0. Then we move the filter one pixel to the right, and calculate again. (if we move one pixel we say we have __STRIDE = 1__ and if we jomp two pixels the stride will be 2.)
+
+photo: stride-one.jpg
+
+There is a very good example of how the convolutions work, at [setosa.io](http://setosa.io/ev/image-kernels/).
+
+#### Pooling Layers:
+
+It will subsample the input image, which decreases the memory use and computer loads, as well as reducing the number of parameters.
+
+They way it works, is to select subsets, (for example 2x2) and finds the max within each sample and compare the maximums together. (pooling-layer.jpg)
+
+It can decrease the amount of data by 75%.
+
+#### Dropout: 
+It is a regularization technique that prevents over-fitting. It removes random samples during the training process.
+
+#### Some famous CNN architectures:
+
+- LeNet-5
+- AlexNet
+- GoogLeNet
+- ResNet
 
   
