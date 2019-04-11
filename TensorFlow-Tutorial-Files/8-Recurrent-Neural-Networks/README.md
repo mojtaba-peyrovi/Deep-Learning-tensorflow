@@ -43,3 +43,32 @@ The neurons that are the function of inputs from the previous time steps, are kn
 
 Here we do a simple recurrent example, that has a layer of 3 neurons. check the photos: (manual-example-1,2,3)
 
+
+There are some challenges happen while working with recurrent neural networks. 
+ 
+ 
+ __Vanishing Gradient:__ It happens when on the backpropogation process, the gradient vanishes or explodes. It happnes mostly with big networks. when backpropagating, the gradient gets smaller and smaller, it causes the weights never change at lower levels. The opposite is possible too. The gradient gets bigger and bigger, and explodes.
+
+There are some solutions on it:
+
+- first, using different activation functions that can help, liks ReLu, Leaky ReLu, ELU.
+- Another solution, is to do batch normalization that the model normalizes each batch using batch mean and standard deviation.
+- Gradient clipping: gradients are cut off before a predetermined limits.
+
+ 
+#### Special neurons for time-series analysis:
+
+we discuss two types of neurons. __Long Short-Term Memory (LSTM)__ and __Gated Recurrent Units (GRU).__ 
+
+The technical stuff behind the scene has been covered in TensorFlow and we don't have to worry about them. The nice and clean API of TF will be used and explained here.
+
+#### Predicting the sequential values of the function sin(x):
+
+photo: sin-x-prediction.jpg
+
+Now we are going to train the model, using a sequence, and try to predict one step further along the sequence. 
+
+Later we try to predict way more steps further along the sequence based on seed series( in this example all zeros)
+
+
+
