@@ -70,5 +70,51 @@ Now we are going to train the model, using a sequence, and try to predict one st
 
 Later we try to predict way more steps further along the sequence based on seed series( in this example all zeros)
 
+see the code in file: RNN_implementation.ipynb
+
+#### Word2Vec library:
+This library, is a useful library for NLP analysis and it vectorizes words into vectors. 
+
+Words are another type of recurrent neural network uses.
+
+In classic NLP words are typically replaced by numbers that show the frequency of the word in the sentence. Doing this approach we will lose information about the words relationship among themselves.
+
+##### Two approached of NLP:
+
+1) __Count-Based:__ frequency of words in corpus (متن)
+2) __Predictive-Based:__ Neighboring words are predicted based on a vector space.
+
+
+`Word2Vec ueses the predictive approach.`
+
+In this tutorial we learn one of the most important uses of Neural Networks, which is __Word2Vec model created by Thomas Mikolov et al.__
+
+The goal is to learn word embeddings by modeling each word as a vector in n-dimensional space.
+
+__EMBEDDING:__ An embedding is a mapping of a discrete — categorical — variable to a vector of continuous numbers. In the context of neural networks, embeddings are low-dimensional, learned continuous vector representations of discrete variables. Neural network embeddings are useful because they can reduce the dimensionality of categorical variables and meaningfully represent categories in the transformed space.
+
+##### Why do we use word-embedding?
+
+The reason, is because the vector representation of words in a n-dimensional space will be so sparce and we can't use them in the way we could use vectors for audio analysis, or image analysis.
+
+Word2Vec creates vectors spaced models that represent (embed) words in a continuous vector space.
+
+Using this approach, we can perform vector mathematics on words (add/subtract, or check similarity.)
+
+- During the training, similar words will find their vectors closer together.
+- The model may produce axes that represent concepts, such as gender, verbs, singular vs plural, etc.
+(word2vec-word-relationship-examples.jpg)
+
+Word2Vec comes in two different algorithms:
+
+1) __Skip-Gram model:__ better for larger datasets. Finds the context around a specific word.
+2) __CBOW(Continuous Bag Of Words):__ better for smaller datasets. Finds the word for a specific context.
+
+#####Let's start with CBOW: 
+
+The training mechanism is called __Noise Contrastive Training__ and the goal of it, is to return high probability for the correct word, and the low probability for other words.
+
+Although using TF is powerful or making models of Word2Vec, but it can be so hard. so there is another library built on the top of TF, called [Gensim](https://radimrehurek.com/gensim/models/word2vec.html) that has a much simpler API.
+
 
 
